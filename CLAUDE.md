@@ -16,9 +16,9 @@ file fully before responding to anything course-related.
 
 ## Where everything lives
 
-- **Lessons:** `modules/NN-name/lesson.md` — the teaching content for each module.
-- **Per-module support:** `key-concepts.md`, `exercises.md`, `quiz.md` in each module folder.
-- **Pre-class warm-up:** `recap-and-preview.md` in each module folder — recaps the prior
+- **Lessons:** `modules/Module_N_Name/study-material/lesson.md` — the teaching content for each module.
+- **Per-module support:** `key-concepts.md`, `exercises.md`, `quiz.md` in each module's `study-material/` folder.
+- **Pre-class warm-up:** `recap-and-preview.md` in each module's `study-material/` folder — recaps the prior
   module and previews this one, for a ~15-min review before a live class (see `warmup` skill).
 - **Definitions:** `reference/glossary.md` is the source of truth for terminology.
 - **Deep dives:** other files in `reference/`.
@@ -29,19 +29,24 @@ file fully before responding to anything course-related.
 
 The course runs in this order — six modules, "from efficiency to action":
 
-1. `01-agents-and-harness` — The agent loop, ReAct, and what a production harness adds on top of a bare loop.
-2. `02-quantization-and-optimization` — LLM quantization, KV caching, and speculative decoding for fast, cheap inference.
-3. `03-agentic-rag` — Agentic RAG, semantic caching, and Knowledge Graphs for hybrid memory.
-4. `04-voice-agents` — Voice agents: the STT → LLM → TTS stack, turn-taking, and latency budgeting.
-5. `05-multi-agent-systems` — Multi-agent coordination and the protocol layer: MCP, A2A, and ADK.
-6. `06-guardrails-and-evals` — Production guardrails (Llama Guard) and trajectory-vs-outcome evaluation.
+1. `Module_1_Agent_Loop` — The agent loop, ReAct, and what a production harness adds on top of a bare loop.
+2. `Module_2_Quantization_and_KV_Caching` (+ `Module_2_Speculative_Decoding_from_scratch`) — LLM quantization, KV caching, and speculative decoding for fast, cheap inference.
+3. `Module_3_Agentic_RAG` — Agentic RAG, semantic caching, and Knowledge Graphs for hybrid memory.
+4. `Module_4_Voice_Agents` — Voice agents: the STT → LLM → TTS stack, turn-taking, and latency budgeting.
+5. `Module_5_Multi_Agents` — Multi-agent coordination and the protocol layer: MCP, A2A, and ADK.
+6. `Module_6_AI_Evaluation` — Production guardrails (Llama Guard) and trajectory-vs-outcome evaluation.
 
 
-**Module folder structure.** Every module under `modules/` follows the same layout: the five
+**Module folder structure.** Each module lives under `modules/Module_N_Name/`. The five
 teaching files (`lesson.md`, `key-concepts.md`, `exercises.md`, `quiz.md`, `recap-and-preview.md`)
-alongside that module's supporting material (notebooks, code, project READMEs). Teach from the
-lesson files and pull in the supporting material for hands-on work. Copy `modules/_TEMPLATE/`
-when adding a new module.
+live in that module's `study-material/` subfolder, alongside the module's supporting material
+(notebooks, code, project READMEs) at the module root. Teach from the `study-material/` lesson
+files and pull in the supporting material for hands-on work. Copy `modules/_TEMPLATE/` (whose
+five files become the module's `study-material/`) when adding a new module.
+
+> Note: only `Module_1_Agent_Loop` currently has the full `study-material/` set. The other
+> modules so far contain only supporting material (notebooks, code, READMEs); their teaching
+> files still need to be authored.
 
 ## Teaching style
 
