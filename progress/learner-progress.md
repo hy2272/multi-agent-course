@@ -13,12 +13,12 @@
 
 | Module | Status | Notes / weak spots |
 |--------|--------|--------------------|
-| 01 — Agents, ReAct & the Harness | in progress | Built from-scratch ReAct agent (Agent Pro ReAct.ipynb) end-to-end + ran it ✅. Also ran AgentPro framework notebook (AgentPro Starter) ✅ — grasped "framework = a hardened version of the harness you hand-wrote" (ReactAgent ≈ his AgentPro class; agent.run() = the loop; response.final_answer = structured output vs his .split() hack). Installed AgentPro + smolagents into .venv (Python 3.14, py>=3.8 OK); noted AgentPro's unpinned deps DOWNGRADED openai/pydantic/etc = real dependency-hell lesson. Strong conceptual grasp: Tool vs LLMTool, @abstractmethod as contract, Observation must be filled by harness (not model) to avoid hallucination, self.messages = memory/context, prompt↔parser coupling. Sharp at spotting fragile real-world code (dead code, regex first-block-only, hardcoded models). Strong Python-internals curiosity. Module 1 HOMEWORK DONE ✅ — used /beautiful-html to build a 16-page deck on the ReAct loop (react-agent-loop.html/.pdf), plus a 10-page Module 1 recap deck (module-1-recap.html/.pdf) from vault notes. Learned PDF export via Playwright. REMAINING: run smolagents notebook (Smol Agents Updated.ipynb) — only the OpenAI-based CodeAgent cells (cell 7 load_dotenv, cell 8 CodeAgent); skip HF_TOKEN/GOOGLE_MAP cells. |
-| 02 — Quantization & Optimization | not started | |
+| 01 — Agents, ReAct & the Harness | ✅ COMPLETE | Built from-scratch ReAct agent (Agent Pro ReAct.ipynb) end-to-end + ran it ✅. Ran AgentPro framework + smolagents (CodeAgent/ToolCallingAgent/@tool/travel agent) ✅. Grasped: framework = hardened harness; Tool vs LLMTool; @abstractmethod contract; Observation must be filled by harness (not model) → no hallucination; messages = memory; prompt↔parser coupling; tool reliability = result reliability; sandbox/permissions (additional_authorized_imports). Homework done (/beautiful-html deck). Learned uv + per-framework envs, Jupyter≠production. Detailed notes in Obsidian vault module-1. |
+| 02 — Skills, Subagents & Multi-Agent Orchestration | not started | (upstream restructured the course — this was formerly "Quantization"; new Module 2 is Skills/Subagents) |
 | 03 — Agentic RAG, Semantic Cache & Knowledge Graphs | not started | |
-| 04 — Voice Agents | not started | |
+| 04 — Evaluation & Guardrails | not started | |
 | 05 — Multi-Agent Systems (MCP · A2A · ADK) | not started | |
-| 06 — Evaluation & Guardrails | not started | |
+| 06 — Voice Agents & LLM Optimization | not started | |
 
 Status values: not started · in progress · completed · needs review
 

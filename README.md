@@ -1,27 +1,51 @@
-# Agent Engineering Bootcamp: Developers Edition
+<div align="center">
 
-Welcome to the official course repository for **Agent Engineering Bootcamp: Developers Edition**.
+# 🤖 Agent Engineering Bootcamp
+### Developers Edition
 
-This repo contains all the code, notebooks, exercises, and project materials used throughout the course — a structured journey from deployment efficiency to validated, production-grade agentic systems. You'll master the full stack: the agent harness and ReAct orchestration, LLM optimization, hybrid memory (RAG + Knowledge Graphs), multi-agent coordination, and the evaluation discipline that proves it all works.
+**From a 50-line agent loop to validated, production-grade agentic systems — built every week, by you.**
 
-🔗 [Visit course page](https://maven.com/boring-bot/advanced-llm)
+[![Course](https://img.shields.io/badge/Maven-Live%20Cohort-6E40C9?style=for-the-badge)](https://maven.com/boring-bot/advanced-llm)
+&nbsp;
+![Rating](https://img.shields.io/badge/★%204.8%2F5-107%20reviews-FF6F61?style=for-the-badge)
+&nbsp;
+![Modules](https://img.shields.io/badge/6%20Modules-~6%20weeks-2EA043?style=for-the-badge)
+&nbsp;
+[![Built with Claude](https://img.shields.io/badge/Built%20with-Claude%20Code-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://claude.com/claude-code)
+
+[**Course page**](https://maven.com/boring-bot/advanced-llm) · [**Curriculum**](#course-curriculum) · [**What you'll build**](#what-youll-build) · [**Sprint Zero capstone**](#full-stack-projects) · [**Learn with Claude**](#learn-with-claude-ai-tutor)
+
+<img width="900" alt="Agent Engineering Bootcamp" src="assets/image.png" />
+
+</div>
 
 ---
 
-<img width="2752" height="auto" alt="Agent Engineering Bootcamp" src="assets/image.png" />
+Welcome to the official course repository for **Agent Engineering Bootcamp: Developers Edition** — all the code, notebooks, exercises, and project materials used throughout the course. It's a structured journey from deployment efficiency to validated agentic systems: the agent harness and ReAct orchestration, LLM optimization, hybrid memory (RAG + Knowledge Graphs), multi-agent coordination, and the evaluation discipline that proves it all works.
 
 ## Quick Links
 
 **Course modules** (in teaching order):
 
 1. [Module 1 — The Agent Loop, ReAct & the Harness](#module-1--the-agent-loop-react--the-harness)
-2. [Module 2 — LLM Quantization, KV Caching & Speculative Decoding](#module-2--llm-quantization-kv-caching--speculative-decoding)
+2. [Module 2 — Skills, Subagents & Multi-Agent Orchestration](#module-2--skills-subagents--multi-agent-orchestration)
 3. [Module 3 — Agentic RAG, Semantic Cache & Knowledge Graphs](#module-3--agentic-rag-semantic-cache--knowledge-graphs)
-4. [Module 4 — Voice Agents](#module-4--voice-agents)
+4. [Module 4 — Evaluation & Guardrails](#module-4--evaluation--guardrails)
 5. [Module 5 — Multi-Agent Systems (MCP · A2A · ADK)](#module-5--multi-agent-systems-mcp--a2a--adk)
-6. [Module 6 — Evaluation & Guardrails](#module-6--evaluation--guardrails)
+6. [Module 6 — Voice Agents & LLM Optimization](#module-6--voice-agents--llm-optimization)
 
 **Also on this page:** [How to use this repo](#how-to-use-this-repo) · [Technology stack](#technology-stack) · [What you'll build](#what-youll-build)
+
+### 🗺️ Course at a glance
+
+| # | Module | The big idea | You ship |
+|---|--------|--------------|----------|
+| 1️⃣ | **The Agent Loop, ReAct & the Harness** | What an agent *actually* is | A ReAct agent from scratch |
+| 2️⃣ | **Skills, Subagents & Orchestration** | One agent → a coordinated system | **Sprint Zero** — a multi-agent app builder |
+| 3️⃣ | **Agentic RAG, Semantic Cache & KGs** | Retrieval as a tool the agent chooses | A RAG-vs-KG evaluation app |
+| 4️⃣ | **Evaluation & Guardrails** | Ship with proof, not hope | An eval + guardrail harness |
+| 5️⃣ | **Multi-Agent Systems (MCP · A2A · ADK)** | When many agents beat one | A coordinated multi-agent system |
+| 6️⃣ | **Voice Agents & LLM Optimization** | An agent that talks — fast and cheap | A real-time voice agent |
 
 ---
 
@@ -48,7 +72,7 @@ This repo is also set up to be **read and used with [Claude](https://claude.com/
 |-------|--------------|------------|
 | `teach-module` | Runs an interactive lesson for a module, one concept at a time | *"Teach me module 3"* |
 | `quiz-me` | Quizzes you and tracks weak spots (never reveals answers first) | *"Quiz me on RAG"* |
-| `explain-eli5` | Re-explains a concept as simply as possible, with analogies | *"Explain KV caching like I'm five"* |
+| `explain-eli5` | Re-explains a concept as simply as possible, with analogies | *"Explain isolated context like I'm five"* |
 | `build-along` | Guides you through a hands-on exercise step by step | *"Let's do the build-along for module 1"* |
 | `warmup` | A ~15-min pre-class refresher: recaps the last module, previews the next | *"I have class soon — warm me up for module 2"* |
 
@@ -93,11 +117,13 @@ Demystify what an agent actually is: the perceive → reason → act loop, the *
 
 ---
 
-### Module 2 — LLM Quantization, KV Caching & Speculative Decoding
+### Module 2 — Skills, Subagents & Multi-Agent Orchestration
 
-Make the agent loop fast and cheap enough to ship. Understand where latency really comes from and how to cut it.
+Go from *one* agent doing one thing well to a *coordinated system* of agents. Learn why isolated context windows are the whole point, the orchestrator + subagents pattern, and how to define your own subagents — then watch the pattern run end to end in **Sprint Zero**.
 
-**Key topics:** quantization methods (4-bit / 8-bit, FP4 vs. NF4) · KV caching · speculative decoding · inference metrics (TTFT, ITL, throughput) · local vs. cloud hosting
+**Key topics:** agents vs. subagents · isolated context windows · the orchestrator pattern (sequential vs. parallel) · defining subagents in `.claude/agents/` · specialization & the shared-spec coordination layer · multi-agent failure modes · the Sprint Zero capstone
+
+**📦 Featured project: [Sprint Zero](#sprint-zero--a-multi-agent-product-team-in-your-terminal)** — the module's capstone: a multi-agent system that turns a product URL and three answers into six spec docs and a working full-stack app.
 
 
 ---
@@ -120,11 +146,11 @@ streamlit run app.py
 
 ---
 
-### Module 4 — Voice Agents
+### Module 4 — Evaluation & Guardrails
 
-Ship an agent that talks — and survives real conversation.
+Close the loop: ship with measurable quality and safety, not hope.
 
-**Key topics:** the voice stack (STT → LLM → TTS) · turn-taking & end-of-turn detection · latency budgeting, streaming & barge-in · tool calling inside a voice loop · provider landscape (Deepgram, ElevenLabs, OpenAI Realtime, Vapi, Retell)
+**Key topics:** input/output guardrails · prompt-injection & jailbreak defense (Llama Guard) · trajectory eval vs. outcome eval · LLM-as-judge (and how to validate the judge) · golden task sets
 
 
 ---
@@ -139,28 +165,54 @@ When many agents beat one — and the more common case where they don't. Build a
 
 ---
 
-### Module 6 — Evaluation & Guardrails
+### Module 6 — Voice Agents & LLM Optimization
 
-Close the loop: ship with measurable quality and safety, not hope.
+Ship an agent that talks — and survives real conversation — then make the inference behind it fast and cheap enough to run.
 
-**Key topics:** input/output guardrails · prompt-injection & jailbreak defense (Llama Guard) · trajectory eval vs. outcome eval · LLM-as-judge (and how to validate the judge) · golden task sets
+**Key topics:** the voice stack (STT → LLM → TTS) · turn-taking & end-of-turn detection · latency budgeting, streaming & barge-in · tool calling inside a voice loop · provider landscape (Deepgram, ElevenLabs, OpenAI Realtime, Vapi, Retell) · quantization (4-bit / 8-bit, FP4 vs. NF4) · KV caching · speculative decoding · inference metrics (TTFT, ITL, throughput)
 
 
 ---
 
 ## What You'll Build
 
-This course goes beyond theory. Across the six modules you'll ship:
+This course goes beyond theory. Across the six modules you'll ship real, portfolio-ready artifacts:
 
-- An **optimized LLM deployment** with quantization, KV caching, and speculative decoding
-- An **agentic RAG pipeline** with a semantic cache layer
-- A **Knowledge Graph application** with a RAG-vs-KG evaluation framework
-- A **ReAct agent** built from scratch
-- A **voice agent** that handles real conversation
-- A **multi-agent system** with ADK/A2A/MCP coordination
-- An **evaluation + guardrail harness** that validates the whole stack
+| 🛠️ Artifact | What it proves |
+|------------|----------------|
+| 🔁 **ReAct agent** built from scratch | You understand the loop, not just a framework |
+| 🤝 **Sprint Zero** — multi-agent app builder | You can orchestrate specialized subagents to a shared spec |
+| 🔎 **Agentic RAG pipeline** with semantic cache | Retrieval as a decision, with real latency/cost wins |
+| 🕸️ **Knowledge Graph app** + RAG-vs-KG eval | You can pick the right memory for the job and measure it |
+| 🎙️ **Voice agent** that handles real conversation | You can budget latency and survive barge-in |
+| ⚡ **Optimized LLM deployment** | Quantization, KV caching, speculative decoding |
+| ✅ **Evaluation + guardrail harness** | You ship with measurable quality and safety |
 
-Each module includes hands-on projects you can showcase in your portfolio.
+Each module ends with a working artifact you built yourself.
+
+---
+
+## Full Stack Projects
+
+End-to-end, build-along projects that tie the course concepts together.
+
+### 🚀 Sprint Zero — a multi-agent product team in your terminal
+
+> **Point it at a product. Answer three questions. Get back a complete spec set and a working app.**
+
+A Claude Code kit that runs a full sub-agent product team on your laptop — scoping, research, six spec docs, parallel engineering, and QA, all driven from one command. The Module 2 capstone, and a working reference for the orchestrator + subagents pattern.
+
+```
+/sprint-zero https://twenty.com  →  📋 specs  →  🤝 parallel build  →  ✅ QA  →  🟢 running app
+```
+
+- ⚙️ **Configurable** — `web-app` / `api-service` / `cli-tool` · `node-react` / `nextjs` / `python-react`
+- 🔌 **Zero-setup default** — SQLite + local auth, runs straight after clone (no account, no keys)
+- ⏱️ **~10–20 min** end-to-end for an MVP
+
+[![Open Sprint Zero](https://img.shields.io/badge/▶%20Open-Sprint%20Zero-6E40C9?style=for-the-badge)](Full_Stack_Projects/Sprint_Zero)
+
+Built by [Yousuf Alvi](https://github.com/yousuf-alvi) and [Hamza Farooq](https://www.linkedin.com/in/hamzafarooq/).
 
 ---
 
