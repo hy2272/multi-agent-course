@@ -1,13 +1,29 @@
+# ── OS / editor cruft ──────────────────────────────────
 .DS_Store
 *.log
+
+# ── Python ─────────────────────────────────────────────
 __pycache__/
 *.pyc
+.ipynb_checkpoints/
 
-# Secrets — never commit real keys
+# ── Virtual environments (regenerable, huge) ───────────
+.venv/
+venv/
+# per-framework uv envs: ignore the venvs, but KEEP pyproject.toml + uv.lock (the recipe)
+envs/*/.venv/
+
+# ── Secrets — never commit real keys ───────────────────
 .env
 .env.*
 !.env.example
 
-# Virtual environments (regenerable, huge)
-.venv/
-venv/
+# ── Node (regenerable from package.json) ───────────────
+node_modules/
+
+# ── Generated output / build artifacts ─────────────────
+# Decks & exports are regenerated from /scripts; don't commit them.
+output/
+*.pdf
+react-agent-loop.html
+module-1-recap.html

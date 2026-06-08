@@ -94,7 +94,21 @@ Replace all placeholder text in the template HTML with the user's actual content
 
 ---
 
-### Phase 5 — Save and Open
+### Phase 5 — Verify layout before delivering (don't skip)
+
+A static check (balanced tags) does NOT catch layout bugs. Templates make fragile CSS
+assumptions — e.g. a `display:grid` bullet item breaks when content contains inline tags
+like `<strong>`/`<em>` (each becomes a separate grid cell, so words stack vertically and
+overflow off the slide). Always render and eyeball the result before saying it's done:
+
+- Render each slide with Playwright headless Chromium and screenshot the ones most at risk
+  (bullet lists, split/two-column, grid, stats layouts).
+- Inspect the screenshots for text overflowing the slide, broken columns, or clipped content.
+- If something overflows, fix the CSS (or rewrite the content to avoid the inline tags that
+  triggered it) and re-render until clean.
+- Prefer plain text in bullet/grid items; if you need emphasis, verify the rendered output.
+
+### Phase 6 — Save and Open
 
 Save the populated HTML file with a descriptive filename (e.g. `sb-ai-proposal.html`).
 
