@@ -87,3 +87,20 @@ If no style is recorded yet, run the `/start` onboarding before teaching.
   using the module's `recap-and-preview.md`.
 
 Invoke the matching skill whenever the learner's request fits its description.
+
+## Agent skills
+
+Config for Matt Pocock's engineering skills (`to-issues`, `to-prd`, `triage`, `diagnose`,
+`tdd`, `improve-codebase-architecture`, `zoom-out`). Set up 2026-06-09.
+
+### Issue tracker
+
+Local markdown — issues and PRDs live as files under `.scratch/<feature>/`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Canonical role strings (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`), recorded as a `Status:` line in each issue file. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context — one `CONTEXT.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.

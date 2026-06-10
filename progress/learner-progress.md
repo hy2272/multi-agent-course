@@ -7,7 +7,7 @@
 - Name: [unset]
 - Preferred learning style: Build-along (hands-on)
 - Started: 2026-05-30
-- Last session: 2026-06-07
+- Last session: 2026-06-09
 
 ## Module status
 
@@ -83,9 +83,19 @@ All cross-linked, status: to-review.
 
 ### #9 done (2026-06-09)
 - Built `envs/agentpro/` uv env hands-on (build-along, learner ran every command). Walked the 4-step recipe. Real gotchas hit & taught: (1) `cd` didn't take → `uv init` ran in repo root, left a stray `pyproject.toml` we removed → lesson: `pwd` before init. (2) `uv add agentpro` failed "not found in registry" — AgentPro is NOT on PyPI; installed from git via `uv add "agentpro @ git+https://github.com/traversaal-ai/AgentPro.git"` → uv auto-added `[tool.uv.sources]`. (3) Disk question → taught uv global cache + hardlink/CoW dedup (new env's real cost ≈ its unique pkgs only). (4) VSCode didn't show the new kernel → needs refresh/reload; selecting the `.venv` directly works since ipykernel is in it. Verified: `sys.executable` → envs/agentpro/.venv, openai 2.41.0 / pydantic 2.13.4 (NOT downgraded, isolated). Renamed project to `course-agentpro-env` to avoid self-dep clash. uv.lock committed-ready.
+- Follow-up Q&A: taught that the env runs plain `.py` too (3 ways: `uv run python`, activate, direct `.venv/bin/python`); `ipykernel` is only the Jupyter bridge, not needed for scripts. `uv run` ignores an activated VIRTUAL_ENV and uses the project's `.venv` → safer than manual activate. Built `envs/agentpro/test_agent.py` to prove the script path (untracked scratch file).
+
+### /setup-matt-pocock-skills done (2026-06-09)
+- Ran the per-repo setup for the engineering skills, configured for THIS repo. Choices: **issue tracker = local markdown** (`.scratch/<feature>/`), **triage labels = canonical 5** (as a `Status:` line in each issue file), **domain docs = single-context** (`CONTEXT.md` + `docs/adr/`). Wrote: `## Agent skills` block appended to `CLAUDE.md`, plus `docs/agents/issue-tracker.md`, `triage-labels.md`, `domain.md` (seeded from the skill's templates). Now `to-issues`/`to-prd`/`triage`/`diagnose`/`tdd`/`improve-codebase-architecture` know this repo's conventions. Reminder given: skills run with full agent permissions; git-guardrails installs hooks.
+- Also taught the WHOLE Matt Pocock toolkit conceptually: it's a pipeline (think→break→build→debug) chained as grill-me → to-prd → to-issues → triage → tdd → diagnose, with "AFK-agent-ready" slicing (ties to Module 2 subagents).
+
+### Obsidian notes written (2026-06-09)
+- `Reference/Python/uv — isolated Python envs (per-project, 4-step recipe).md` — full uv recipe, gotchas, disk/hardlink, .py vs notebook.
+- `5-Claude-Code/Matt Pocock skills — what each does & the engineering workflow.md` — the toolkit overview + chained workflow.
+Both cross-linked, status: to-review.
 
 ## Next step
-- **All four todos (#9, #10, /setup-matt-pocock-skills note, commit) done.** Only optional leftover: learner runs `/setup-matt-pocock-skills` himself before first using to-issues/triage/diagnose/tdd on a repo.
-- `envs/agentpro/` (pyproject.toml + uv.lock) is new & untracked — commit it so the env is reproducible (`.venv/` stays gitignored).
-- Module 1 fully complete → can offer quiz.md, or move to Module 2 ("Skills, Subagents & Multi-Agent Orchestration") using a fresh uv env (same 4-step recipe).
-- Obsidian notes from 2026-06-08 still outside repo; skill installs are global (not in repo).
+- **Module 1 CLOSED OUT (2026-06-09).** All Module-1 follow-up TODOs + the four new ones (#9 uv env, #10 Obsidian MCP, setup-matt-pocock-skills, commit) are DONE.
+- **PENDING / next session:** run ONE Matt Pocock skill live to see it in action (best candidates: `/grill-me` on a half-formed idea, or `/diagnose` on a real error). Learner asked to defer this to a future session. ALSO: learner should restart Claude Code to load the `mcp-obsidian` tools.
+- **Then: start Module 2 ("Skills, Subagents & Multi-Agent Orchestration").** Spin up a fresh uv env with the 4-step recipe if its notebooks need new deps.
+- Housekeeping: Obsidian notes live in the vault (outside this repo); skill installs are global. `envs/agentpro/test_agent.py` is an untracked scratch file (keep or delete).
