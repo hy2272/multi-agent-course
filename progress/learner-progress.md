@@ -63,6 +63,22 @@ The learner asked to be reminded of ALL of these next time. Surface this whole l
 - Root `.venv` (Python 3.14, kernel "Python (.venv multi-agent)") = LEFT AS-IS. It works for Module 1 notebooks; don't rebuild.
 - **Going forward: Module 2-6 each get their own uv env** (per envs/README.md 4-step recipe). New packages stay isolated per module → no more cross-downgrades. Learner will build agentpro env as practice (#9).
 
+### #5 done (2026-06-08)
+- Synced fork with upstream. upstream remote already set. committed all local work first (commit 25e2805), merged upstream/main (14 commits: Module 2-6 materials, ~40 new skills, Sprint_Zero project), resolved the one conflict in progress/learner-progress.md (kept his Module 1 progress + adopted upstream's new module structure), pushed to origin (787c49b). Taught: --no-edit, origin vs upstream, fetch vs merge, "commit before merge" safety. Repo stays PUBLIC (no secrets; .env gitignored; fork can't easily go private anyway). NOTE: upstream restructured course — Module 2 is now "Skills, Subagents & Multi-Agent Orchestration" (was Quantization).
+
+### #3 + #8 done (2026-06-08)
+- Taught how skills work: folder + SKILL.md (frontmatter description = trigger/router + progressive loading; body = instructions). description quality determines whether Claude triggers/knows the skill.
+- Installed 15 Matt Pocock skills GLOBALLY: diagnose, grill-me, grill-with-docs, triage, improve-codebase-architecture, setup-matt-pocock-skills, tdd, to-issues, to-prd, zoom-out, prototype, handoff, git-guardrails-claude-code, write-a-skill, caveman. Install mechanism: `npx skills@latest add mattpocock/skills --global --yes --skill <name>` → lands in ~/.agents/skills/ (cross-agent) → symlinked to ~/.claude/skills/. The "PromptScript does not support global install" warning is for OTHER agents, not Claude Code.
+- REMINDERS for him: run `/setup-matt-pocock-skills` before using to-issues/triage/diagnose/tdd etc (they need repo issue-tracker/doc config); skills run with full agent permissions (review SKILL.md in ~/.agents/skills/ before trusting); git-guardrails-claude-code installs HOOKS (ties to Module 1 harness hooks concept).
+
+### Obsidian notes written (2026-06-08)
+Three notes, filed by topic (git/skills are cross-course general knowledge, not course-specific):
+- `Reference/Git & GitHub/Fork sync — upstream, commit, merge, resolve conflicts.md`
+- `5-Claude-Code/Agent skills — SKILL.md, cross-agent install (Matt Pocock).md`
+- `1-Courses/multi-agent-course/module-1/Python syntax Q&A (notebooks).md`
+All cross-linked, status: to-review.
+
 ## Next step
-- Remaining: #3+#8 (skills teaching), #5 (git sync), #9 (uv practice), #10 (Obsidian MCP).
-- Module 1 fully complete → can offer quiz.md, or move to Module 2 (Quantization & Optimization) using a fresh uv env.
+- Remaining: #9 (build agentpro uv env as practice), #10 (Obsidian MCP). Optionally run `/setup-matt-pocock-skills` to activate the engineering skills for this repo.
+- Module 1 fully complete → can offer quiz.md, or move to Module 2 (now "Skills, Subagents & Multi-Agent Orchestration") using a fresh uv env.
+- Uncommitted now: progress file edits + new Obsidian notes are outside repo; the skill installs are global (not in repo). Consider committing progress updates next session.
