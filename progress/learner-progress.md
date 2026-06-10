@@ -78,7 +78,14 @@ Three notes, filed by topic (git/skills are cross-course general knowledge, not 
 - `1-Courses/multi-agent-course/module-1/Python syntax Q&A (notebooks).md`
 All cross-linked, status: to-review.
 
+### #10 done (2026-06-09)
+- Obsidian access via MCP. Installed coddingtonbear's **Local REST API** community plugin in vault (`~/Documents/awesome_vault`), enabled it, grabbed its API key. Registered MarkusPfundstein's `mcp-obsidian` server GLOBALLY (`claude mcp add mcp-obsidian --scope user -e OBSIDIAN_API_KEY=… -e OBSIDIAN_HOST=127.0.0.1 -e OBSIDIAN_PORT=27124 -- uvx mcp-obsidian`) → `✓ Connected`. Global scope because the vault is general-purpose, not course-specific. Note: plugin now ships its OWN built-in MCP at `https://127.0.0.1:27124/mcp/`, but Claude Code rejects its self-signed cert, so we use the uvx wrapper (handles the cert internally) instead — did NOT enable the non-encrypted HTTP server. Obsidian tools appear after a Claude Code restart.
+
+### #9 done (2026-06-09)
+- Built `envs/agentpro/` uv env hands-on (build-along, learner ran every command). Walked the 4-step recipe. Real gotchas hit & taught: (1) `cd` didn't take → `uv init` ran in repo root, left a stray `pyproject.toml` we removed → lesson: `pwd` before init. (2) `uv add agentpro` failed "not found in registry" — AgentPro is NOT on PyPI; installed from git via `uv add "agentpro @ git+https://github.com/traversaal-ai/AgentPro.git"` → uv auto-added `[tool.uv.sources]`. (3) Disk question → taught uv global cache + hardlink/CoW dedup (new env's real cost ≈ its unique pkgs only). (4) VSCode didn't show the new kernel → needs refresh/reload; selecting the `.venv` directly works since ipykernel is in it. Verified: `sys.executable` → envs/agentpro/.venv, openai 2.41.0 / pydantic 2.13.4 (NOT downgraded, isolated). Renamed project to `course-agentpro-env` to avoid self-dep clash. uv.lock committed-ready.
+
 ## Next step
-- Remaining: #9 (build agentpro uv env as practice), #10 (Obsidian MCP). Optionally run `/setup-matt-pocock-skills` to activate the engineering skills for this repo.
-- Module 1 fully complete → can offer quiz.md, or move to Module 2 (now "Skills, Subagents & Multi-Agent Orchestration") using a fresh uv env.
-- Uncommitted now: progress file edits + new Obsidian notes are outside repo; the skill installs are global (not in repo). Consider committing progress updates next session.
+- **All four todos (#9, #10, /setup-matt-pocock-skills note, commit) done.** Only optional leftover: learner runs `/setup-matt-pocock-skills` himself before first using to-issues/triage/diagnose/tdd on a repo.
+- `envs/agentpro/` (pyproject.toml + uv.lock) is new & untracked — commit it so the env is reproducible (`.venv/` stays gitignored).
+- Module 1 fully complete → can offer quiz.md, or move to Module 2 ("Skills, Subagents & Multi-Agent Orchestration") using a fresh uv env (same 4-step recipe).
+- Obsidian notes from 2026-06-08 still outside repo; skill installs are global (not in repo).
