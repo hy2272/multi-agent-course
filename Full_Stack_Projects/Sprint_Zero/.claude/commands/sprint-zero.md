@@ -31,8 +31,10 @@ If any step fails unrecoverably, print the named state and a recovery instructio
 STATE: SCOPE_NEEDED       — re-run /sprint-zero <url> with a reachable URL, or run /sprint-zero-scope <url> directly then re-run /sprint-zero <url>
 STATE: DISCOVERY_NEEDED   — fix connectivity or Brave MCP access, then re-run /sprint-zero <url> to resume
 STATE: SPEC_INCOMPLETE    — run the failing command directly (/prd-generator, /decisions-writer, etc.), then re-run /sprint-zero <url> to resume from the build step
+STATE: PREFLIGHT_FAILED    — follow each FAIL line's instruction, then re-run /sprint-zero
 STATE: BUILD_BRIEF_NEEDED — fix the flagged doc issue reported by tech-lead, then re-invoke the tech-lead sub-agent manually
 STATE: BUILD_NEEDED       — re-spawn the failing engineer sub-agent directly, then spawn qa-engineer once both engineers complete
+STATE: REVIEW_BLOCKED     — fix the BLOCKER findings reported by code-reviewer (re-spawn the failing engineer if needed), then re-spawn code-reviewer before continuing to QA
 STATE: QA_NEEDED          — fix the contract mismatches or test failures reported by qa-engineer, then re-spawn qa-engineer
 ```
 
@@ -184,6 +186,15 @@ If `docs/scope.md` is not written by the end of this step, print `STATE: SCOPE_N
 **Presenter status update** (only when `--present`): write `phase: "research"`, `step: "reference-brief"`, `stepNumber: 2`, `message: "Researching the reference."`, and refresh the `docs` array.
 
 ---
+## Step 2b — Preflight checks
+
+Read `.claude/commands/sprint-zero-preflight.md` and follow its instructions exactly. Do not summarise or simulate — read the actual file and do what it says. It needs `docs/scope.md`, which step 2 just wrote.
+
+If any check FAILs, print `STATE: PREFLIGHT_FAILED` with the per-check report and each FAIL's recovery instruction, then stop. Warnings and skips do not block.
+
+(Note: for the `supabase` data layer, step 1b's interactive setup may already have ensured `.env` — the preflight re-verifies it read-only.)
+
+---
 
 ## Step 3 — Reference brief
 
@@ -291,7 +302,18 @@ If any returns anything other than its completion message, print `STATE: BUILD_N
 
 Once the spawned engineers complete, print:
 
-> Build complete. Spawning qa-engineer.
+> Build complete. Spawning code-reviewer for a static pass before QA.
+
+Spawn the `code-reviewer` sub-agent, following its definition in `.claude/agents/code-reviewer.md`. It reads `docs/scope.md`, `docs/api-contract.md`, `docs/decisions.md`, and the build source (`server/` and `client/`), and returns a structured report of BLOCKER / WARN / NOTE findings calibrated to the scope level. It is a read-only static review — it does not modify files or run tests, so it is cheaper than QA and catches contract and security issues before the browser suite runs.
+
+Print the code-reviewer's report so the user can read it. Then:
+
+- If the report contains any **BLOCKER** findings, print `STATE: REVIEW_BLOCKED` with the blocker list and recovery instructions, and stop. Do not proceed to QA on a build with known blockers.
+- If the report contains only WARN / NOTE findings (or none), print a one-line summary of the counts and continue to QA. WARN and NOTE do not block — they are surfaced for the user's judgement.
+
+Once the review passes (no blockers), print:
+
+> Review passed. Spawning qa-engineer.
 
 Spawn `qa-engineer`. Pass the scope level, core loop, and build configuration in the prompt. Tell QA the **resolved ports** from the stack profile (e.g. node-react: backend 3001 / frontend 5173; python-react: backend 8000 / frontend 5173; nextjs: app on 3000, same-origin API). For `clickable` scope, instruct QA to skip the auth dance and API integration tests. For `api-service`, QA runs API/integration checks only (no browser). For `cli-tool`, QA runs the CLI with sample args and asserts on output.
 

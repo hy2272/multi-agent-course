@@ -14,7 +14,7 @@
 | Module | Status | Notes / weak spots |
 |--------|--------|--------------------|
 | 01 — Agents, ReAct & the Harness | ✅ COMPLETE | Built from-scratch ReAct agent (Agent Pro ReAct.ipynb) end-to-end + ran it ✅. Ran AgentPro framework + smolagents (CodeAgent/ToolCallingAgent/@tool/travel agent) ✅. Grasped: framework = hardened harness; Tool vs LLMTool; @abstractmethod contract; Observation must be filled by harness (not model) → no hallucination; messages = memory; prompt↔parser coupling; tool reliability = result reliability; sandbox/permissions (additional_authorized_imports). Homework done (/beautiful-html deck). Learned uv + per-framework envs, Jupyter≠production. Detailed notes in Obsidian vault module-1. |
-| 02 — Skills, Subagents & Multi-Agent Orchestration | not started | (upstream restructured the course — this was formerly "Quantization"; new Module 2 is Skills/Subagents) |
+| 02 — Skills, Subagents & Multi-Agent Orchestration | ✅ COMPLETE | Lesson DONE (6/9): all 7 concepts first-try. Assignment (Track 2 Developer, due 6/12) DONE & packaged: built **TWO** components for Sprint Zero, both spec-first. (1) `/sprint-zero-preflight` command — env precondition checks (Node ver, exact `playwright` MCP name, ports, supabase .env), graded WARN/FAIL, wired as Step 2b; tested 3 rounds incl. break-on-purpose. (2) `code-reviewer` subagent (stretch = Exercise 2) — read-only (tools: Read/Glob/Grep), static review by dimension, wired build→review→QA with REVIEW_BLOCKED state. Real spawn found 1 blocker/4 warn/3 note; correctly graded JWT-default as WARN not BLOCKER (context calibration). Then ran the **full REVIEW_BLOCKED→fix→re-review→QA recovery loop live** (0 blockers, QA-green). Zip at `.scratch/sprint-zero-assignment/Hanfei_Yao_Assignment.zip`. Exercise 1 (6/9) verbal: SAS→PySpark agent team, tests‖code = TDD insight. |
 | 03 — Agentic RAG, Semantic Cache & Knowledge Graphs | not started | |
 | 04 — Evaluation & Guardrails | not started | |
 | 05 — Multi-Agent Systems (MCP · A2A · ADK) | not started | |
@@ -95,7 +95,15 @@ All cross-linked, status: to-review.
 Both cross-linked, status: to-review.
 
 ## Next step
-- **Module 1 CLOSED OUT (2026-06-09).** All Module-1 follow-up TODOs + the four new ones (#9 uv env, #10 Obsidian MCP, setup-matt-pocock-skills, commit) are DONE.
-- **PENDING / next session:** run ONE Matt Pocock skill live to see it in action (best candidates: `/grill-me` on a half-formed idea, or `/diagnose` on a real error). Learner asked to defer this to a future session. ALSO: learner should restart Claude Code to load the `mcp-obsidian` tools.
-- **Then: start Module 2 ("Skills, Subagents & Multi-Agent Orchestration").** Spin up a fresh uv env with the 4-step recipe if its notebooks need new deps.
-- Housekeeping: Obsidian notes live in the vault (outside this repo); skill installs are global. `envs/agentpro/test_agent.py` is an untracked scratch file (keep or delete).
+- **Module 2 CLOSED OUT (2026-06-12).** Lesson + assignment (two components, full recovery loop) done & packaged. Assignment steps 1-5 all complete; zip at `.scratch/sprint-zero-assignment/Hanfei_Yao_Assignment.zip`. FINAL TODO for her: read README once in her own voice, then `rm` + re-`zip`, then submit per platform.
+- **⭐ NEXT BIG ARC — MASTER PLAN: `.scratch/sprint-zero-assignment/plan.md`** (read first in any new session). Phase A (assignment) DONE. **Phase B = next: mindfulness/presence companion pivot** — intentions + check-ins, breathing display, PiP caption bar, random bells, audio; spec-layer rebuild recipe incl. the "git won't preserve the build, `cp -R` first" gotcha. Phase C = Matt Pocock skills integration (`teach` + `learning/` zone). Plus the anti-drift principles (taught 6/11).
+- Optional Module 2 follow-ups (low priority, mostly covered): quiz.md; run ONE Matt Pocock skill live (`/grill-me` or `/diagnose`) — deferred since 6/9.
+- Housekeeping: `envs/agentpro/test_agent.py` untracked scratch (keep or delete). Background StreakHabit servers may still be running — `pkill -f "node index.js"` / `pkill -f "vite"`.
+
+## Session notes 2026-06-09 (evening — Module 2 lesson)
+- **Obsidian MCP verified working** after restart (listed vault root successfully).
+- **Learner identity learned: Hanfei (she/her)**, KP data engineer (SAS→PySpark/Databricks), Columbia Stats MS, example-first thinker. Second bootcamp (Aurimas, end-to-end AI eng) starts 6/22.
+- **Created `~/.claude/CLAUDE.md` (global)** — her TOP PRIORITY ("help her become excellent at using AI": example-first, flag AI-leverage moments, meta-tips, build-along, explain how/why), background for depth calibration, language rule (deliverables EN / discussion CN ok). She believed this existed already — it didn't; taught global-vs-project CLAUDE.md vs model memory.
+- Teaching analogies that landed: ETL stage boundaries = specialization by domain; schema = shared spec; spec-detailed-enough-to-parallelize-tests = TDD.
+- Repo gaps found (upstream omissions, not errors): Module 2's 6 lecture-source files (`1_*.md`…`5_*.md`, v10 PDF) and Sprint_Zero's `plan.md` are referenced by READMEs but never committed. Slide deck says default DB = Supabase; repo's current default is local SQLite (deck/code drift — good improvement-note material).
+- Two `.claude/` dirs gotcha hit live: course repo's vs Sprint_Zero's — agents load from the dir where Claude Code starts.
