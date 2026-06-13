@@ -1,6 +1,6 @@
 # Sprint Zero Assignment — Track 2 (Developer)
 
-**Hanfei Yao · June 12, 2026**
+_June 12, 2026_
 
 ## What I built
 
