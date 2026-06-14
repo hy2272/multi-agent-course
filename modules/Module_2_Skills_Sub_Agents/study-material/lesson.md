@@ -142,6 +142,24 @@ review, customer research (one agent per transcript).]
 **Check:** In Sprint Zero, what single artifact lets the backend and frontend agents work in
 parallel without ever talking to each other?
 
+## Concept 8 — The mental shift
+
+[Step back from the mechanics — this is the reframe that makes the module *stick*. The classic
+product workflow was: write a good spec for engineers, they build it, you review it. With
+multi-agent systems your job changes shape — you now **design the agent team**. You decide each
+agent's role, what inputs it gets, what outputs it produces, and how the results connect. That's
+an *organizational design* problem — the same judgment you'd apply to a cross-functional team,
+now pointed at AI agents. The agents are fast and skip the standups, but they still need clear
+ownership, clean handoffs, and a spec that defines what "done" looks like. Notice this is the
+same lesson as Concept 5 (specialization) and Concept 6 (failure modes), viewed from one level
+up: the orchestrator isn't a coder, it's a *manager of specialists*. Whether you come at it as a
+PM or as a developer running the orchestrator, the skill that matters most isn't prompting any
+single agent well — it's how you carve up the work and wire the pieces together.]
+
+**Check:** "Designing the agent team is an organizational design problem." What does that buy you
+as an intuition — i.e., what existing skill can you reuse when you sit down to split work across
+agents?
+
 ---
 
 ## Summary
@@ -150,6 +168,8 @@ parallel without ever talking to each other?
 2. The orchestrator pattern coordinates specialized agents; sequential where work depends,
    parallel where it doesn't (wall-clock = the slower branch). A shared spec is the glue.
 3. Sprint Zero is this pattern made real: sequential spec writers → parallel builders → QA.
+4. The mental shift: building multi-agent systems is **organizational design** — you manage a
+   team of specialists, so the leverage is in how you divide the work, not in any one prompt.
 
 ## Where to next
 - Do `exercises.md` (design an agent team, then write a real subagent), or ask to be quizzed
