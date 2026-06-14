@@ -37,3 +37,12 @@
   its identity, job, and constraints. At spawn time it gets that prompt plus the task content;
   everything else is isolated.
 - **Hint:** It's a folder under `.claude/`, and the file isn't config — it's the prompt itself.
+
+## Q6. The lesson calls building a multi-agent system "an organizational design problem." What's the practical takeaway behind that phrase?
+- Type: explain-why
+- **Answer:** The orchestrator is a *manager of specialists*, not a coder. So your leverage is
+  in how you divide the work — each agent's role, inputs, outputs, and handoffs — not in
+  prompting any single agent perfectly. It's the same judgment you'd apply to a cross-functional
+  team (clear ownership, clean handoffs, a spec that defines "done"), now pointed at AI agents.
+- **Hint:** Think about which skill transfers — what do you already do when you split work across
+  a team of people?
