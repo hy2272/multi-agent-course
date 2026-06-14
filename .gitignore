@@ -27,3 +27,6 @@ output/
 *.pdf
 react-agent-loop.html
 module-1-recap.html
+
+# ── Large binary course decks (kept locally, not in git) ──
+*.pptx
